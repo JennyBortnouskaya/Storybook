@@ -2,28 +2,32 @@ import React, {useState} from 'react';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 
 
-import Rating, {RatingValueType} from './Rating';
+
 import {Button} from '../../stories/Button';
+import {OnOff} from "./OnOff";
+import Rating, {RatingValueType} from "../Rating/Rating";
+import {action} from "@storybook/addon-actions";
 
 
 export default {
-    title: 'Rating stories',
-    component: Rating,
+    title: 'OnOff stories',
+    component: OnOff,
 
     argTypes: {
         backgroundColor: {control: 'color'},
     },
 } as ComponentMeta<typeof Button>;
 
-export const EmptyStar = () => <Rating value={0} onClick={x => x}/>
-export const Rating1 = () => <Rating value={1} onClick={x => x}/>
-export const Rating2 = () => <Rating value={2} onClick={x => x}/>
-export const Rating3 = () => <Rating value={3} onClick={x => x}/>
-export const Rating4 = () => <Rating value={4} onClick={x => x}/>
-export const RatingChanging = () => {
-    const [rating, setRating] = useState<RatingValueType>(5)
-    return <Rating value={rating} onClick={setRating}/>
+const callback = action("on or off clicked")
+
+export const OnMode = () => <OnOff on={true} onChange={callback}/>
+export const OffMode = () => <OnOff on={false} onChange={callback}/>
+
+export const ModeChanging = () => {
+    const [value, setValue] = useState<boolean>(true)
+    return <OnOff on={value} onChange={setValue}/>
 }
+
 
 // const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 //
