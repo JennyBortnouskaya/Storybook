@@ -3,7 +3,7 @@ import {AccordionBody, AccordionTitle } from "../Accordion/Accordion";
 
 type UncontrolledAccordionPropsType = {
     title: string;
-    onClick: () => void;
+    // onClick: () => void;
 }
 
 export function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
